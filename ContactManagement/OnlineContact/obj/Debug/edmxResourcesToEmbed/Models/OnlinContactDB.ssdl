@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="entityframeworkModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="entityframeworkModelStoreContainer">
+    <EntitySet Name="tbladdresses" EntityType="entityframeworkModel.Store.tbladdresses" store:Type="Tables" Schema="entityframework" />
+    <EntitySet Name="tblphonenumbers" EntityType="entityframeworkModel.Store.tblphonenumbers" store:Type="Tables" Schema="entityframework" />
+    <EntitySet Name="tblphonetypes" EntityType="entityframeworkModel.Store.tblphonetypes" store:Type="Tables" Schema="entityframework" />
+    <EntitySet Name="tblprofiles" EntityType="entityframeworkModel.Store.tblprofiles" store:Type="Tables" Schema="entityframework" />
+    <AssociationSet Name="fk_tblAddresses_tblprofiles1" Association="entityframeworkModel.Store.fk_tblAddresses_tblprofiles1">
+      <End Role="tblprofiles" EntitySet="tblprofiles" />
+      <End Role="tbladdresses" EntitySet="tbladdresses" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tblphonenumbers_tblphonetypes1" Association="entityframeworkModel.Store.fk_tblphonenumbers_tblphonetypes1">
+      <End Role="tblphonetypes" EntitySet="tblphonetypes" />
+      <End Role="tblphonenumbers" EntitySet="tblphonenumbers" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tblphonenumbers_tblprofiles1" Association="entityframeworkModel.Store.fk_tblphonenumbers_tblprofiles1">
+      <End Role="tblprofiles" EntitySet="tblprofiles" />
+      <End Role="tblphonenumbers" EntitySet="tblphonenumbers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tbladdresses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AddressLine1" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="AddressLine2" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="PostCode" Type="varchar" Nullable="false" MaxLength="8" />
+    <Property Name="County" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="City" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="Country" Type="varchar" Nullable="false" MaxLength="75" />
+    <Property Name="FKProfileID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblphonenumbers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="FKPhoneTypeID" Type="int" Nullable="false" />
+    <Property Name="FKProfileID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblphonetypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblprofiles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="NickName" Type="varchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <Association Name="fk_tblAddresses_tblprofiles1">
+    <End Role="tblprofiles" Type="entityframeworkModel.Store.tblprofiles" Multiplicity="1" />
+    <End Role="tbladdresses" Type="entityframeworkModel.Store.tbladdresses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblprofiles">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tbladdresses">
+        <PropertyRef Name="FKProfileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tblphonenumbers_tblphonetypes1">
+    <End Role="tblphonetypes" Type="entityframeworkModel.Store.tblphonetypes" Multiplicity="1" />
+    <End Role="tblphonenumbers" Type="entityframeworkModel.Store.tblphonenumbers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblphonetypes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblphonenumbers">
+        <PropertyRef Name="FKPhoneTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tblphonenumbers_tblprofiles1">
+    <End Role="tblprofiles" Type="entityframeworkModel.Store.tblprofiles" Multiplicity="1" />
+    <End Role="tblphonenumbers" Type="entityframeworkModel.Store.tblphonenumbers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblprofiles">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblphonenumbers">
+        <PropertyRef Name="FKProfileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

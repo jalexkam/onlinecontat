@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="entityframeworkModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="OnlineContact" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="addresses" EntityType="entityframeworkModel.address" />
+    <EntitySet Name="phonenumbers" EntityType="entityframeworkModel.phonenumber" />
+    <EntitySet Name="phonetypes" EntityType="entityframeworkModel.phonetype" />
+    <EntitySet Name="profiles" EntityType="entityframeworkModel.profile" />
+    <AssociationSet Name="fk_tblAddresses_tblprofiles1" Association="entityframeworkModel.fk_tblAddresses_tblprofiles1">
+      <End Role="tblprofiles" EntitySet="profiles" />
+      <End Role="tbladdresses" EntitySet="addresses" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tblphonenumbers_tblphonetypes1" Association="entityframeworkModel.fk_tblphonenumbers_tblphonetypes1">
+      <End Role="tblphonetypes" EntitySet="phonetypes" />
+      <End Role="tblphonenumbers" EntitySet="phonenumbers" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tblphonenumbers_tblprofiles1" Association="entityframeworkModel.fk_tblphonenumbers_tblprofiles1">
+      <End Role="tblprofiles" EntitySet="profiles" />
+      <End Role="tblphonenumbers" EntitySet="phonenumbers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="address">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AddressLine1" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="AddressLine2" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="PostCode" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+    <Property Name="County" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Country" Type="String" Nullable="false" MaxLength="75" Unicode="false" FixedLength="false" />
+    <Property Name="FKProfileID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="profile" Relationship="entityframeworkModel.fk_tblAddresses_tblprofiles1" FromRole="tbladdresses" ToRole="tblprofiles" />
+  </EntityType>
+  <EntityType Name="phonenumber">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="FKPhoneTypeID" Type="Int32" Nullable="false" />
+    <Property Name="FKProfileID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="phonetype" Relationship="entityframeworkModel.fk_tblphonenumbers_tblphonetypes1" FromRole="tblphonenumbers" ToRole="tblphonetypes" />
+    <NavigationProperty Name="profile" Relationship="entityframeworkModel.fk_tblphonenumbers_tblprofiles1" FromRole="tblphonenumbers" ToRole="tblprofiles" />
+  </EntityType>
+  <EntityType Name="phonetype">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="phonenumbers" Relationship="entityframeworkModel.fk_tblphonenumbers_tblphonetypes1" FromRole="tblphonetypes" ToRole="tblphonenumbers" />
+  </EntityType>
+  <EntityType Name="profile">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="NickName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="addresses" Relationship="entityframeworkModel.fk_tblAddresses_tblprofiles1" FromRole="tblprofiles" ToRole="tbladdresses" />
+    <NavigationProperty Name="phonenumbers" Relationship="entityframeworkModel.fk_tblphonenumbers_tblprofiles1" FromRole="tblprofiles" ToRole="tblphonenumbers" />
+  </EntityType>
+  <Association Name="fk_tblAddresses_tblprofiles1">
+    <End Role="tblprofiles" Type="entityframeworkModel.profile" Multiplicity="1" />
+    <End Role="tbladdresses" Type="entityframeworkModel.address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblprofiles">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tbladdresses">
+        <PropertyRef Name="FKProfileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tblphonenumbers_tblphonetypes1">
+    <End Role="tblphonetypes" Type="entityframeworkModel.phonetype" Multiplicity="1" />
+    <End Role="tblphonenumbers" Type="entityframeworkModel.phonenumber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblphonetypes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblphonenumbers">
+        <PropertyRef Name="FKPhoneTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tblphonenumbers_tblprofiles1">
+    <End Role="tblprofiles" Type="entityframeworkModel.profile" Multiplicity="1" />
+    <End Role="tblphonenumbers" Type="entityframeworkModel.phonenumber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblprofiles">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblphonenumbers">
+        <PropertyRef Name="FKProfileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
