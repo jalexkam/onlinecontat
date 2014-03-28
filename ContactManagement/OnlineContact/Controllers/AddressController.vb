@@ -1,4 +1,4 @@
-﻿'Imports MvcOnlineContact.Models
+﻿'Imports OnlineContact.Models
 Imports OnlineContact.Models
 
 Namespace Controllers

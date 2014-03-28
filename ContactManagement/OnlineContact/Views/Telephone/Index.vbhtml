@@ -1,16 +1,16 @@
-﻿@ModelType IEnumerable(Of MvcOnlineContact.PhoneNumber)
+﻿@ModelType IEnumerable(Of OnlineContact.PhoneNumber)
 @Code
-    Dim phoneProfile As MvcOnlineContact.Profile = CType(ViewBag.PhoneProfile, MvcOnlineContact.Profile)
+    Dim phoneProfile As OnlineContact.Profile = CType(ViewBag.PhoneProfile, OnlineContact.Profile)
     
     ViewData("Title") = phoneProfile.FirstName & " " & phoneProfile.LastName & "Phone Numbers List"
     
-    Dim phoneNumbersType As List(Of MvcOnlineContact.PhoneType) = New List(Of MvcOnlineContact.PhoneType)   
-    phoneNumbersType = CType(ViewBag.phoneNumbersType, List(Of MvcOnlineContact.PhoneType))
+    Dim phoneNumbersType As List(Of OnlineContact.PhoneType) = New List(Of OnlineContact.PhoneType)   
+    phoneNumbersType = CType(ViewBag.phoneNumbersType, List(Of OnlineContact.PhoneType))
     
     ''pass the phone numbers type to the partial view  
     Dim viewDataDictionaryNumbersType As ViewDataDictionary = New ViewDataDictionary()
     Dim key As String = "NumbersType"
-    Dim value As List(Of MvcOnlineContact.PhoneType) = phoneNumbersType
+    Dim value As List(Of OnlineContact.PhoneType) = phoneNumbersType
     viewDataDictionaryNumbersType.Add(key, value)
       
 End Code

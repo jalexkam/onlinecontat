@@ -1,15 +1,15 @@
-﻿@ModelType MvcOnlineContact.PhoneNumber
+﻿@ModelType OnlineContact.PhoneNumber
 
 @code
     
-    Dim phoneNumbersType As List(Of MvcOnlineContact.PhoneType) = CType(ViewData("Numberstype"), List(Of MvcOnlineContact.PhoneType))   
+    Dim phoneNumbersType As List(Of OnlineContact.PhoneType) = CType(ViewData("Numberstype"), List(Of OnlineContact.PhoneType))   
 End Code
 
 <tr>
     <td>
         <select name="FKPhoneTypeID">
             <option value="0">Please select Phone type</option>
-            @For Each phoneType As MvcOnlineContact.PhoneType In phoneNumbersType
+            @For Each phoneType As OnlineContact.PhoneType In phoneNumbersType
                 Dim seletedPhoneType As Boolean = (Model.FKPhoneTypeID = phoneType.ID)
                            
                 If seletedPhoneType Then

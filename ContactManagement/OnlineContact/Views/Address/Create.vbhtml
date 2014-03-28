@@ -1,4 +1,4 @@
-﻿@ModelType MvcOnlineContact.Address
+﻿@ModelType OnlineContact.Address
 
 @Code
     ViewData("Title") = "Create"

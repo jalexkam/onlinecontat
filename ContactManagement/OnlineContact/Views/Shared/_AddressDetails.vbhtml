@@ -1,4 +1,4 @@
-﻿@ModelType MvcOnlineContact.Address
+﻿@ModelType OnlineContact.Address
 
 @Using Html.BeginForm("Delete", "Address", New With {.id = Model.ID}, FormMethod.Post, DBNull.Value)
     

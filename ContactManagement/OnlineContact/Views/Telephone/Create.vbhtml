@@ -1,7 +1,7 @@
-﻿@ModelType MvcOnlineContact.PhoneNumber
+﻿@ModelType OnlineContact.PhoneNumber
 
 @Code
-    Dim profile As MvcOnlineContact.Profile = CType(ViewBag.createProfile, MvcOnlineContact.Profile)
+    Dim profile As OnlineContact.Profile = CType(ViewBag.createProfile, OnlineContact.Profile)
     ViewData("Title") = "Add Phone number to" & profile.FirstName & profile.LastName
 End Code
 

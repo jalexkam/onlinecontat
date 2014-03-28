@@ -1,4 +1,4 @@
-﻿@ModelType MvcOnlineContact.Profile
+﻿@ModelType OnlineContact.profile
 
 @Code
     ViewData("Title") = "Add New Contact"

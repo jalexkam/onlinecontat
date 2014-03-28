@@ -1,33 +1,33 @@
-﻿@ModelType IEnumerable(Of MvcOnlineContact.Address)
+﻿@ModelType IEnumerable(Of OnlineContact.Address)
 
 @Code
     
-    Dim AddressProfile As MvcOnlineContact.Profile = CType(ViewBag.AddressProfile, MvcOnlineContact.Profile)
+    Dim AddressProfile As OnlineContact.profile = CType(ViewBag.AddressProfile, OnlineContact.profile)
     ViewData("Title") = AddressProfile.FirstName & " " & AddressProfile.LastName
     
  
     'Delete error message
-    Dim errorDeleteAddress As MvcOnlineContact.Models.DeleteAddressErrorMessage = Nothing
+    Dim errorDeleteAddress As OnlineContact.Models.DeleteAddressErrorMessage = Nothing
     If Not ViewBag.ErrorDeleteAddress Is Nothing Then
-        errorDeleteAddress = CType(ViewBag.ErrorDeleteAddress, MvcOnlineContact.Models.DeleteAddressErrorMessage)
+        errorDeleteAddress = CType(ViewBag.ErrorDeleteAddress, OnlineContact.Models.DeleteAddressErrorMessage)
     End If
     
     'Delete success message
-    Dim successDeleteAddress As MvcOnlineContact.Models.DeleteAddressSuccessMessage = Nothing
+    Dim successDeleteAddress As OnlineContact.Models.DeleteAddressSuccessMessage = Nothing
     If Not ViewBag.SuccessDeleteAddress Is Nothing Then
-        successDeleteAddress = CType(ViewBag.SuccessDeleteAddress, MvcOnlineContact.Models.DeleteAddressSuccessMessage)
+        successDeleteAddress = CType(ViewBag.SuccessDeleteAddress, OnlineContact.Models.DeleteAddressSuccessMessage)
     End If
     
     'Create contact success message
-    Dim successCreateAddress As MvcOnlineContact.Models.CreateAddressSuccessMessage = Nothing
+    Dim successCreateAddress As OnlineContact.Models.CreateAddressSuccessMessage = Nothing
     If Not ViewBag.SuccessCreateAddress Is Nothing Then
-        successCreateAddress = CType(ViewBag.SuccessCreateAddress, MvcOnlineContact.Models.CreateAddressSuccessMessage)
+        successCreateAddress = CType(ViewBag.SuccessCreateAddress, OnlineContact.Models.CreateAddressSuccessMessage)
     End If
     
     'Edit Address success message
-    Dim successEditAddress As MvcOnlineContact.Models.EditAddressSuccessMessage = Nothing
+    Dim successEditAddress As OnlineContact.Models.EditAddressSuccessMessage = Nothing
     If Not ViewBag.SuccessEditAddress Is Nothing Then
-        successEditAddress = CType(ViewBag.SuccessEditAddress, MvcOnlineContact.Models.EditAddressSuccessMessage)
+        successEditAddress = CType(ViewBag.SuccessEditAddress, OnlineContact.Models.EditAddressSuccessMessage)
     End If
     
 End Code

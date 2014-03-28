@@ -11,7 +11,6 @@ C:\githubproject\contactmanagement\ContactManagement\OnlineContact\bin\System.We
 C:\githubproject\contactmanagement\ContactManagement\OnlineContact\bin\System.Web.Http.WebHost.xml
 C:\githubproject\contactmanagement\ContactManagement\OnlineContact\bin\System.Web.Mvc.xml
 C:\githubproject\contactmanagement\ContactManagement\OnlineContact\bin\System.Web.Razor.xml
-C:\githubproject\contactmanagement\ContactManagement\OnlineContact\bin\System.Web.WebPages.xml
 C:\githubproject\contactmanagement\ContactManagement\OnlineContact\bin\System.Web.WebPages.Deployment.xml
 C:\githubproject\contactmanagement\ContactManagement\OnlineContact\bin\System.Web.WebPages.Razor.xml
 C:\githubproject\contactmanagement\ContactManagement\OnlineContact\bin\WebMatrix.Data.xml

@@ -1,4 +1,4 @@
-﻿Imports MvcOnlineContact
+﻿Imports OnlineContact
 Namespace Models
     ''' <summary>
     ''' Class for managing delete profile error 
