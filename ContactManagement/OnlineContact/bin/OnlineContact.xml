@@ -34,6 +34,14 @@ OnlineContact
 	<summary>
  No Metadata Documentation available.
  </summary>
+</member><member name="P:OnlineContact.OnlineContact.userdetails">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.OnlineContact.aspnetusers">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
 </member><member name="M:OnlineContact.OnlineContact.AddToaddresses(OnlineContact.address)">
 	<summary>
  Deprecated Method for adding a new object to the addresses EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
@@ -49,6 +57,14 @@ OnlineContact
 </member><member name="M:OnlineContact.OnlineContact.AddToprofiles(OnlineContact.profile)">
 	<summary>
  Deprecated Method for adding a new object to the profiles EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
+ </summary>
+</member><member name="M:OnlineContact.OnlineContact.AddTouserdetails(OnlineContact.userdetail)">
+	<summary>
+ Deprecated Method for adding a new object to the userdetails EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
+ </summary>
+</member><member name="M:OnlineContact.OnlineContact.AddToaspnetusers(OnlineContact.aspnetusers)">
+	<summary>
+ Deprecated Method for adding a new object to the aspnetusers EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
  </summary>
 </member><member name="T:OnlineContact.OnlineContact">
 	<summary>
@@ -107,6 +123,42 @@ OnlineContact
  No Metadata Documentation available.
  </summary>
 </member><member name="T:OnlineContact.address">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="M:OnlineContact.aspnetusers.Createaspnetusers(System.Int32,System.Int32,System.String,System.Boolean)">
+	<summary>
+ Create a new aspnetusers object.
+ </summary>
+	<param name="id">Initial value of the id property.</param>
+	<param name="applicationId">Initial value of the applicationId property.</param>
+	<param name="name">Initial value of the name property.</param>
+	<param name="isAnonymous">Initial value of the isAnonymous property.</param>
+</member><member name="P:OnlineContact.aspnetusers.id">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.aspnetusers.applicationId">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.aspnetusers.name">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.aspnetusers.isAnonymous">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.aspnetusers.lastActivityDate">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.aspnetusers.userdetails">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="T:OnlineContact.aspnetusers">
 	<summary>
  No Metadata Documentation available.
  </summary>
@@ -176,7 +228,7 @@ OnlineContact
 	<summary>
  No Metadata Documentation available.
  </summary>
-</member><member name="M:OnlineContact.profile.Createprofile(System.Int32,System.String,System.String,System.String,System.String)">
+</member><member name="M:OnlineContact.profile.Createprofile(System.Int32,System.String,System.String,System.String,System.String,System.Int32)">
 	<summary>
  Create a new profile object.
  </summary>
@@ -185,6 +237,7 @@ OnlineContact
 	<param name="lastName">Initial value of the LastName property.</param>
 	<param name="email">Initial value of the Email property.</param>
 	<param name="nickName">Initial value of the NickName property.</param>
+	<param name="fKUserDetailsID">Initial value of the FKUserDetailsID property.</param>
 </member><member name="P:OnlineContact.profile.ID">
 	<summary>
  No Metadata Documentation available.
@@ -205,6 +258,10 @@ OnlineContact
 	<summary>
  No Metadata Documentation available.
  </summary>
+</member><member name="P:OnlineContact.profile.FKUserDetailsID">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
 </member><member name="P:OnlineContact.profile.addresses">
 	<summary>
  No Metadata Documentation available.
@@ -213,7 +270,89 @@ OnlineContact
 	<summary>
  No Metadata Documentation available.
  </summary>
+</member><member name="P:OnlineContact.profile.userdetail">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.profile.userdetailReference">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
 </member><member name="T:OnlineContact.profile">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="M:OnlineContact.userdetail.Createuserdetail(System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32)">
+	<summary>
+ Create a new userdetail object.
+ </summary>
+	<param name="id">Initial value of the ID property.</param>
+	<param name="firstName">Initial value of the FirstName property.</param>
+	<param name="lastName">Initial value of the LastName property.</param>
+	<param name="addressLine1">Initial value of the AddressLine1 property.</param>
+	<param name="addressLine2">Initial value of the AddressLine2 property.</param>
+	<param name="city">Initial value of the City property.</param>
+	<param name="postCode">Initial value of the PostCode property.</param>
+	<param name="country">Initial value of the Country property.</param>
+	<param name="fKUserName">Initial value of the FKUserName property.</param>
+	<param name="fKUserID">Initial value of the FKUserID property.</param>
+</member><member name="P:OnlineContact.userdetail.ID">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.userdetail.FirstName">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.userdetail.LastName">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.userdetail.AddressLine1">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.userdetail.AddressLine2">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.userdetail.City">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.userdetail.PostCode">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.userdetail.Country">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.userdetail.FKUserName">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.userdetail.FKUserID">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.userdetail.tbluserdetailscol">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.userdetail.profiles">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.userdetail.aspnetusers">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="P:OnlineContact.userdetail.aspnetusersReference">
+	<summary>
+ No Metadata Documentation available.
+ </summary>
+</member><member name="T:OnlineContact.userdetail">
 	<summary>
  No Metadata Documentation available.
  </summary>

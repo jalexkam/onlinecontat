@@ -31,7 +31,7 @@
             </div>
            
         </div>
-        <hr class="span8 offset2" />
+        @*<hr class="span8 offset2" />*@
     </div>  
     
    @<div class="modal hide fade deleteAddress" id="deleteAddress">

@@ -17,6 +17,16 @@
       <End Role="tblprofiles" EntitySet="profiles" />
       <End Role="tblphonenumbers" EntitySet="phonenumbers" />
     </AssociationSet>
+    <EntitySet Name="userdetails" EntityType="entityframeworkModel.userdetail" />
+    <AssociationSet Name="fk_tblprofiles_tbluserdetails1" Association="entityframeworkModel.fk_tblprofiles_tbluserdetails1">
+      <End Role="tbluserdetail" EntitySet="userdetails" />
+      <End Role="profile" EntitySet="profiles" />
+    </AssociationSet>
+    <EntitySet Name="aspnetusers" EntityType="entityframeworkModel.aspnetusers" />
+    <AssociationSet Name="fk_tbluserdetails_my_aspnet_users1" Association="entityframeworkModel.fk_tbluserdetails_my_aspnet_users1">
+      <End Role="my_aspnet_users" EntitySet="aspnetusers" />
+      <End Role="tbluserdetail" EntitySet="userdetails" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="address">
     <Key>
@@ -62,6 +72,8 @@
     <Property Name="NickName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="addresses" Relationship="entityframeworkModel.fk_tblAddresses_tblprofiles1" FromRole="tblprofiles" ToRole="tbladdresses" />
     <NavigationProperty Name="phonenumbers" Relationship="entityframeworkModel.fk_tblphonenumbers_tblprofiles1" FromRole="tblprofiles" ToRole="tblphonenumbers" />
+    <Property Type="Int32" Name="FKUserDetailsID" Nullable="false" />
+    <NavigationProperty Name="userdetail" Relationship="entityframeworkModel.fk_tblprofiles_tbluserdetails1" FromRole="profile" ToRole="tbluserdetail" />
   </EntityType>
   <Association Name="fk_tblAddresses_tblprofiles1">
     <End Role="tblprofiles" Type="entityframeworkModel.profile" Multiplicity="1" />
@@ -96,6 +108,59 @@
       </Principal>
       <Dependent Role="tblphonenumbers">
         <PropertyRef Name="FKProfileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="userdetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AddressLine1" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AddressLine2" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="City" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PostCode" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Country" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FKUserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="FKUserID" Nullable="false" />
+    <Property Name="tbluserdetailscol" MaxLength="45" FixedLength="false" Unicode="false" Type="String" />
+    <NavigationProperty Name="profiles" Relationship="entityframeworkModel.fk_tblprofiles_tbluserdetails1" FromRole="tbluserdetail" ToRole="profile" />
+    <NavigationProperty Name="aspnetusers" Relationship="entityframeworkModel.fk_tbluserdetails_my_aspnet_users1" FromRole="tbluserdetail" ToRole="my_aspnet_users" />
+  </EntityType>
+  <Association Name="fk_tblprofiles_tbluserdetails1">
+    <End Type="entityframeworkModel.userdetail" Role="tbluserdetail" Multiplicity="1" />
+    <End Type="entityframeworkModel.profile" Role="profile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbluserdetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="profile">
+        <PropertyRef Name="FKUserDetailsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="aspnetusers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="applicationId" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="isAnonymous" Nullable="false" />
+    <Property Type="DateTime" Name="lastActivityDate" />
+    <NavigationProperty Name="userdetails" Relationship="entityframeworkModel.fk_tbluserdetails_my_aspnet_users1" FromRole="my_aspnet_users" ToRole="tbluserdetail" />
+  </EntityType>
+  <Association Name="fk_tbluserdetails_my_aspnet_users1">
+    <End Type="entityframeworkModel.aspnetusers" Role="my_aspnet_users" Multiplicity="1" />
+    <End Type="entityframeworkModel.userdetail" Role="tbluserdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="my_aspnet_users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tbluserdetail">
+        <PropertyRef Name="FKUserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -7,11 +7,11 @@ Public Class BundleConfig
         bundles.Add(New ScriptBundle("~/bundles/jquery").Include(
                    "~/Scripts/jquery-{version}.js"))
 
-        bundles.Add(New ScriptBundle("~/bundles/jqueryval").Include(
-                    "~/Scripts/jquery.unobtrusive*",
-                    "~/Scripts/jquery.validate*"))
-
-
+        bundles.Add(New ScriptBundle("~/bundles/bootstrapjquery").Include(
+                    "~/Scripts/bootstrap-datepicker.js",
+                     "~/Scripts/bootstrap-datetimepicker.js",
+                      "~/Scripts/bootstrap-datetimepicker-min.js",
+                       "~/Scripts/bootstrap-min.js"))
 
 
         bundles.Add(New StyleBundle("~/Content/css").Include("~/Content/css/bootstrap.css",

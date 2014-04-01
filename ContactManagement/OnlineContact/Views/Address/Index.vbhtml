@@ -80,9 +80,10 @@ End If
 
     $(document).ready(function () {
 
+        console.log("page is ready");
         // position the delete button of the address correctly
         var lastSpanWidth = $(".address div.span4:nth-child(3) input.remove").outerWidth();
-        $(".address div.span4:nth-child(3) div.m-button").css({ left: (lastSpanWidth + 5) + 'px'});
+        $(".address div.span4:nth-child(3) div.m-button").css({ left: (lastSpanWidth + 5) + 'px' });
 
 
         //add modal to confirm the delete of an address
@@ -90,7 +91,7 @@ End If
             event.preventDefault();
             var button = event.target;
             var form = $(button).closest("Form");
-//            $(form).css({"margin-bottom": "0px", "border":"5px solid black"});
+            //            $(form).css({"margin-bottom": "0px", "border":"5px solid black"});
             $(form).find(".deleteAddress").modal('show');
 
         });

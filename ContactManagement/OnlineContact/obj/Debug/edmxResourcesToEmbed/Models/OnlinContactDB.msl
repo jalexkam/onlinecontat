@@ -36,11 +36,40 @@
     <EntitySetMapping Name="profiles">
       <EntityTypeMapping TypeName="entityframeworkModel.profile">
         <MappingFragment StoreEntitySet="tblprofiles">
+          <ScalarProperty Name="FKUserDetailsID" ColumnName="FKUserDetailsID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="NickName" ColumnName="NickName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userdetails">
+      <EntityTypeMapping TypeName="entityframeworkModel.userdetail">
+        <MappingFragment StoreEntitySet="tbluserdetails">
+          <ScalarProperty Name="tbluserdetailscol" ColumnName="tbluserdetailscol" />
+          <ScalarProperty Name="FKUserID" ColumnName="FKUserID" />
+          <ScalarProperty Name="FKUserName" ColumnName="FKUserName" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aspnetusers">
+      <EntityTypeMapping TypeName="entityframeworkModel.aspnetusers">
+        <MappingFragment StoreEntitySet="my_aspnet_users">
+          <ScalarProperty Name="lastActivityDate" ColumnName="lastActivityDate" />
+          <ScalarProperty Name="isAnonymous" ColumnName="isAnonymous" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="applicationId" ColumnName="applicationId" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

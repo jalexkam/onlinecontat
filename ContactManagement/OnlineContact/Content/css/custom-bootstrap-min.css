@@ -14,13 +14,15 @@ body {
 
 /* Wrapper for page content to push down footer */
 #wrap {
-  min-height: 100%;
   height: auto !important;
-  height: 100%;
   /* Negative indent footer by its height */
   margin: 0 auto -60px;
   /* Pad bottom by footer height */
   padding: 0 0 60px;
+   box-sizing:border-box;
+-moz-box-sizing:border-box; /* Firefox */
+-web-box-sizing:border-box; /* Firefox */
+min-height: 100%;
 }
 
 /* Set the fixed height of the footer here */
@@ -36,13 +38,14 @@ body {
 .container.body {
   padding: 0px 15px 0;
   height: 100% !important;
-  
-  
-
-    height: auto !important;
-    margin: 0 auto -60px;
+    margin: 0 auto 0;
     min-height: 100%;
-    padding: 0 0 60px;
+    padding: 0px  1em;
+    padding-top: 60px ;
+     box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+    -web-box-sizing:border-box; /* Firefox */
+    
 
 }
 
@@ -58,7 +61,12 @@ footer, #wrap > .container {
 #footer > .container {
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 15px;
   height: 100%;
+  box-sizing:border-box;
+-moz-box-sizing:border-box; /* Firefox */
+-web-box-sizing:border-box; /* Firefox */
+
 }
 
 code {
@@ -115,3 +123,118 @@ code {
 
 
 
+
+
+    
+        
+        .table-vcenter td
+        {
+            vertical-align: middle !important;
+        }
+        .table-vcenter td .btn, .table-vcenter td div .btn
+        {
+            margin-top: 0px !important;
+        }
+        
+        .table-vcenter td input, .table-vcenter td select
+        {
+            margin-bottom: 0px !important;
+        }
+        
+        div.row-fluid.address div.span4
+        {
+            position: relative;
+            border: 1px solid red;
+        }
+        
+        div.row-fluid.address div.span4 input, table.phone-number input
+        {
+            background-color: #FFF;
+            border: 1px solid #CCC;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+            display: inline-block;
+            height: 20px;
+            padding: 4px 6px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 20px;
+            color: #555;
+            vertical-align: middle;
+            border-radius: 4px;
+            border: 1px solid orange;
+        }
+        
+        div.row-fluid.address div.span4 div.m-button
+        {
+            position: absolute;
+            top: 0px;
+            margin-top: 0px;
+            margin-left: 5px;
+            width: auto !important;
+        }
+        
+        div.row-fluid.address div.span4 div.m-button .btn
+        {
+            margin-top: 0px !important;
+        }
+        
+        table.phone-number div.pull-right form
+        {
+            margin: 0px 0px 0px 5px;
+            float: right;
+        }
+        
+        table.table-bordered.table-vcenter thead:first-child tr:first-child > th:last-child
+        {
+            width: 175px;
+        }
+        
+        h3.warning()
+        {
+            color: #DA4F49;
+        }
+        h4.info()
+        {
+            color: #DA4F49;
+            background-color: #49AFCD;
+            padding: 0.75em;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box; /* Firefox */
+            -web-box-sizing: border-box; /* Firefox */
+            border: 1px solid orange;
+            color: #fff;
+            border-radius: 4px;
+        }
+        
+        h4.error()
+        {
+            color: #DA4F49;
+            background-color: #FAA732;
+            padding: 0.75em;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box; /* Firefox */
+            -web-box-sizing: border-box; /* Firefox */
+            border: 1px solid #DA4F49;
+            color: #fff;
+            border-radius: 4px;
+        }
+        
+        h4.success()
+        {
+            background-color: #5BB75B;
+            padding: 0.75em;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box; /* Firefox */
+            -web-box-sizing: border-box; /* Firefox */
+            border: 1px solid #49AFCD;
+            color: #fff;
+            border-radius: 4px;
+        }
+        
+        hr[class^="span"]
+        {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        

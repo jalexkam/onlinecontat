@@ -27,6 +27,10 @@
         successEditProfile = CType(ViewBag.SuccessEditProfile, OnlineContact.Models.EditProfileSuccessMessage)
     End If
     
+    Dim userInfo As OnlineContact.userdetail = CType(ViewBag.UserInfo, OnlineContact.userdetail)
+    
+    
+    
     
 End Code
 <div class="row-fluid">
@@ -59,7 +63,7 @@ End Code
 
     <div class="row-fluid">
        <div class="span9">
-            <h3>Alexandre Online Contact</h3>
+            <h3> @userInfo.FirstName @userInfo.LastName Online Contact</h3>
         </div>
         <div class="span3">
             @Html.ActionLink("Add New Contact", "Create", "Profile", DBNull.Value, New With {.class = "btn btn-primary pull-right", .style = "margin-top: 20px"})

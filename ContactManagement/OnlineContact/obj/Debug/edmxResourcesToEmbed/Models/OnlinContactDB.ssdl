@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="entityframeworkModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="entityframeworkModelStoreContainer">
+    <EntitySet Name="my_aspnet_users" EntityType="entityframeworkModel.Store.my_aspnet_users" store:Type="Tables" Schema="entityframework" />
     <EntitySet Name="tbladdresses" EntityType="entityframeworkModel.Store.tbladdresses" store:Type="Tables" Schema="entityframework" />
     <EntitySet Name="tblphonenumbers" EntityType="entityframeworkModel.Store.tblphonenumbers" store:Type="Tables" Schema="entityframework" />
     <EntitySet Name="tblphonetypes" EntityType="entityframeworkModel.Store.tblphonetypes" store:Type="Tables" Schema="entityframework" />
     <EntitySet Name="tblprofiles" EntityType="entityframeworkModel.Store.tblprofiles" store:Type="Tables" Schema="entityframework" />
+    <EntitySet Name="tbluserdetails" EntityType="entityframeworkModel.Store.tbluserdetails" store:Type="Tables" Schema="entityframework" />
     <AssociationSet Name="fk_tblAddresses_tblprofiles1" Association="entityframeworkModel.Store.fk_tblAddresses_tblprofiles1">
       <End Role="tblprofiles" EntitySet="tblprofiles" />
       <End Role="tbladdresses" EntitySet="tbladdresses" />
@@ -17,7 +19,25 @@
       <End Role="tblprofiles" EntitySet="tblprofiles" />
       <End Role="tblphonenumbers" EntitySet="tblphonenumbers" />
     </AssociationSet>
+    <AssociationSet Name="fk_tblprofiles_tbluserdetails1" Association="entityframeworkModel.Store.fk_tblprofiles_tbluserdetails1">
+      <End Role="tbluserdetails" EntitySet="tbluserdetails" />
+      <End Role="tblprofiles" EntitySet="tblprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tbluserdetails_my_aspnet_users1" Association="entityframeworkModel.Store.fk_tbluserdetails_my_aspnet_users1">
+      <End Role="my_aspnet_users" EntitySet="my_aspnet_users" />
+      <End Role="tbluserdetails" EntitySet="tbluserdetails" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="my_aspnet_users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="applicationId" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="256" />
+    <Property Name="isAnonymous" Type="bool" Nullable="false" />
+    <Property Name="lastActivityDate" Type="datetime" />
+  </EntityType>
   <EntityType Name="tbladdresses">
     <Key>
       <PropertyRef Name="ID" />
@@ -56,6 +76,23 @@
     <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="Email" Type="varchar" Nullable="false" MaxLength="100" />
     <Property Name="NickName" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="FKUserDetailsID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbluserdetails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="AddressLine1" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="AddressLine2" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="City" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="PostCode" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="Country" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="FKUserName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="FKUserID" Type="int" Nullable="false" />
+    <Property Name="tbluserdetailscol" Type="varchar" MaxLength="45" />
   </EntityType>
   <Association Name="fk_tblAddresses_tblprofiles1">
     <End Role="tblprofiles" Type="entityframeworkModel.Store.tblprofiles" Multiplicity="1" />
@@ -90,6 +127,30 @@
       </Principal>
       <Dependent Role="tblphonenumbers">
         <PropertyRef Name="FKProfileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tblprofiles_tbluserdetails1">
+    <End Role="tbluserdetails" Type="entityframeworkModel.Store.tbluserdetails" Multiplicity="1" />
+    <End Role="tblprofiles" Type="entityframeworkModel.Store.tblprofiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbluserdetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblprofiles">
+        <PropertyRef Name="FKUserDetailsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tbluserdetails_my_aspnet_users1">
+    <End Role="my_aspnet_users" Type="entityframeworkModel.Store.my_aspnet_users" Multiplicity="1" />
+    <End Role="tbluserdetails" Type="entityframeworkModel.Store.tbluserdetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="my_aspnet_users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tbluserdetails">
+        <PropertyRef Name="FKUserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

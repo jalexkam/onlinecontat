@@ -18,11 +18,13 @@ Imports System.Runtime.Serialization
 Imports System.Xml.Serialization
 
 
-<Assembly: EdmSchemaAttribute("6228d51a-7041-4585-bcdb-7e9fd662f26f")>
+<Assembly: EdmSchemaAttribute("4892752a-24e8-4e90-8672-376e2dd3345a")>
 #Region "EDM Relationship Metadata"
 <Assembly: EdmRelationshipAttribute("entityframeworkModel", "fk_tblAddresses_tblprofiles1", "tblprofiles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(profile), "tbladdresses", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(address), True)>
 <Assembly: EdmRelationshipAttribute("entityframeworkModel", "fk_tblphonenumbers_tblphonetypes1", "tblphonetypes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(phonetype), "tblphonenumbers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(phonenumber), True)>
 <Assembly: EdmRelationshipAttribute("entityframeworkModel", "fk_tblphonenumbers_tblprofiles1", "tblprofiles", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(profile), "tblphonenumbers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(phonenumber), True)>
+<Assembly: EdmRelationshipAttribute("entityframeworkModel", "fk_tblprofiles_tbluserdetails1", "tbluserdetail", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(userdetail), "profile", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(profile), True)>
+<Assembly: EdmRelationshipAttribute("entityframeworkModel", "fk_tbluserdetails_my_aspnet_users1", "my_aspnet_users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, GetType(aspnetusers), "tbluserdetail", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, GetType(userdetail), True)>
 
 #End Region
 
@@ -130,6 +132,34 @@ Public Partial Class OnlineContact
 
     Private _profiles As ObjectSet(Of profile)
 
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    Public ReadOnly Property userdetails() As ObjectSet(Of userdetail)
+        Get
+            If (_userdetails Is Nothing) Then
+                _userdetails = MyBase.CreateObjectSet(Of userdetail)("userdetails")
+            End If
+            Return _userdetails
+        End Get
+    End Property
+
+    Private _userdetails As ObjectSet(Of userdetail)
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    Public ReadOnly Property aspnetusers() As ObjectSet(Of aspnetusers)
+        Get
+            If (_aspnetusers Is Nothing) Then
+                _aspnetusers = MyBase.CreateObjectSet(Of aspnetusers)("aspnetusers")
+            End If
+            Return _aspnetusers
+        End Get
+    End Property
+
+    Private _aspnetusers As ObjectSet(Of aspnetusers)
+
     #End Region
 
     #Region "AddTo Methods"
@@ -160,6 +190,20 @@ Public Partial Class OnlineContact
     ''' </summary>
     Public Sub AddToprofiles(ByVal profile As profile)
         MyBase.AddObject("profiles", profile)
+    End Sub
+
+    ''' <summary>
+    ''' Deprecated Method for adding a new object to the userdetails EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
+    ''' </summary>
+    Public Sub AddTouserdetails(ByVal userdetail As userdetail)
+        MyBase.AddObject("userdetails", userdetail)
+    End Sub
+
+    ''' <summary>
+    ''' Deprecated Method for adding a new object to the aspnetusers EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
+    ''' </summary>
+    Public Sub AddToaspnetusers(ByVal aspnetusers As aspnetusers)
+        MyBase.AddObject("aspnetusers", aspnetusers)
     End Sub
 
     #End Region
@@ -441,6 +485,189 @@ Public Partial Class address
         Set
             If (Not value Is Nothing)
                 CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of profile)("entityframeworkModel.fk_tblAddresses_tblprofiles1", "tblprofiles", value)
+            End If
+        End Set
+    End Property
+
+    #End Region
+
+End Class
+
+''' <summary>
+''' No Metadata Documentation available.
+''' </summary>
+<EdmEntityTypeAttribute(NamespaceName:="entityframeworkModel", Name:="aspnetusers")>
+<Serializable()>
+<DataContractAttribute(IsReference:=True)>
+Public Partial Class aspnetusers
+    Inherits EntityObject
+    #Region "Factory Method"
+
+    ''' <summary>
+    ''' Create a new aspnetusers object.
+    ''' </summary>
+    ''' <param name="id">Initial value of the id property.</param>
+    ''' <param name="applicationId">Initial value of the applicationId property.</param>
+    ''' <param name="name">Initial value of the name property.</param>
+    ''' <param name="isAnonymous">Initial value of the isAnonymous property.</param>
+    Public Shared Function Createaspnetusers(id As Global.System.Int32, applicationId As Global.System.Int32, name As Global.System.String, isAnonymous As Global.System.Boolean) As aspnetusers
+        Dim aspnetusers as aspnetusers = New aspnetusers
+        aspnetusers.id = id
+        aspnetusers.applicationId = applicationId
+        aspnetusers.name = name
+        aspnetusers.isAnonymous = isAnonymous
+        Return aspnetusers
+    End Function
+
+    #End Region
+
+    #Region "Primitive Properties"
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property id() As Global.System.Int32
+        Get
+            Return _id
+        End Get
+        Set
+            If (_id <> Value) Then
+                OnidChanging(value)
+                ReportPropertyChanging("id")
+                _id = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("id")
+                OnidChanged()
+            End If
+        End Set
+    End Property
+
+    Private _id As Global.System.Int32
+    Private Partial Sub OnidChanging(value As Global.System.Int32)
+    End Sub
+
+    Private Partial Sub OnidChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property applicationId() As Global.System.Int32
+        Get
+            Return _applicationId
+        End Get
+        Set
+            OnapplicationIdChanging(value)
+            ReportPropertyChanging("applicationId")
+            _applicationId = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("applicationId")
+            OnapplicationIdChanged()
+        End Set
+    End Property
+
+    Private _applicationId As Global.System.Int32
+    Private Partial Sub OnapplicationIdChanging(value As Global.System.Int32)
+    End Sub
+
+    Private Partial Sub OnapplicationIdChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property name() As Global.System.String
+        Get
+            Return _name
+        End Get
+        Set
+            OnnameChanging(value)
+            ReportPropertyChanging("name")
+            _name = StructuralObject.SetValidValue(value, false)
+            ReportPropertyChanged("name")
+            OnnameChanged()
+        End Set
+    End Property
+
+    Private _name As Global.System.String
+    Private Partial Sub OnnameChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnnameChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property isAnonymous() As Global.System.Boolean
+        Get
+            Return _isAnonymous
+        End Get
+        Set
+            OnisAnonymousChanging(value)
+            ReportPropertyChanging("isAnonymous")
+            _isAnonymous = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("isAnonymous")
+            OnisAnonymousChanged()
+        End Set
+    End Property
+
+    Private _isAnonymous As Global.System.Boolean
+    Private Partial Sub OnisAnonymousChanging(value As Global.System.Boolean)
+    End Sub
+
+    Private Partial Sub OnisAnonymousChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property lastActivityDate() As Nullable(Of Global.System.DateTime)
+        Get
+            Return _lastActivityDate
+        End Get
+        Set
+            OnlastActivityDateChanging(value)
+            ReportPropertyChanging("lastActivityDate")
+            _lastActivityDate = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("lastActivityDate")
+            OnlastActivityDateChanged()
+        End Set
+    End Property
+
+    Private _lastActivityDate As Nullable(Of Global.System.DateTime)
+    Private Partial Sub OnlastActivityDateChanging(value As Nullable(Of Global.System.DateTime))
+    End Sub
+
+    Private Partial Sub OnlastActivityDateChanged()
+    End Sub
+
+    #End Region
+
+    #Region "Navigation Properties"
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("entityframeworkModel", "fk_tbluserdetails_my_aspnet_users1", "tbluserdetail")>
+     Public Property userdetails() As EntityCollection(Of userdetail)
+        Get
+            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of userdetail)("entityframeworkModel.fk_tbluserdetails_my_aspnet_users1", "tbluserdetail")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of userdetail)("entityframeworkModel.fk_tbluserdetails_my_aspnet_users1", "tbluserdetail", value)
             End If
         End Set
     End Property
@@ -773,13 +1000,15 @@ Public Partial Class profile
     ''' <param name="lastName">Initial value of the LastName property.</param>
     ''' <param name="email">Initial value of the Email property.</param>
     ''' <param name="nickName">Initial value of the NickName property.</param>
-    Public Shared Function Createprofile(id As Global.System.Int32, firstName As Global.System.String, lastName As Global.System.String, email As Global.System.String, nickName As Global.System.String) As profile
+    ''' <param name="fKUserDetailsID">Initial value of the FKUserDetailsID property.</param>
+    Public Shared Function Createprofile(id As Global.System.Int32, firstName As Global.System.String, lastName As Global.System.String, email As Global.System.String, nickName As Global.System.String, fKUserDetailsID As Global.System.Int32) As profile
         Dim profile as profile = New profile
         profile.ID = id
         profile.FirstName = firstName
         profile.LastName = lastName
         profile.Email = email
         profile.NickName = nickName
+        profile.FKUserDetailsID = fKUserDetailsID
         Return profile
     End Function
 
@@ -914,6 +1143,31 @@ Public Partial Class profile
     Private Partial Sub OnNickNameChanged()
     End Sub
 
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property FKUserDetailsID() As Global.System.Int32
+        Get
+            Return _FKUserDetailsID
+        End Get
+        Set
+            OnFKUserDetailsIDChanging(value)
+            ReportPropertyChanging("FKUserDetailsID")
+            _FKUserDetailsID = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("FKUserDetailsID")
+            OnFKUserDetailsIDChanged()
+        End Set
+    End Property
+
+    Private _FKUserDetailsID As Global.System.Int32
+    Private Partial Sub OnFKUserDetailsIDChanging(value As Global.System.Int32)
+    End Sub
+
+    Private Partial Sub OnFKUserDetailsIDChanged()
+    End Sub
+
     #End Region
 
     #Region "Navigation Properties"
@@ -950,6 +1204,413 @@ Public Partial Class profile
         Set
             If (Not value Is Nothing)
                 CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of phonenumber)("entityframeworkModel.fk_tblphonenumbers_tblprofiles1", "tblphonenumbers", value)
+            End If
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("entityframeworkModel", "fk_tblprofiles_tbluserdetails1", "tbluserdetail")>
+    Public Property userdetail() As userdetail
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of userdetail)("entityframeworkModel.fk_tblprofiles_tbluserdetails1", "tbluserdetail").Value
+        End Get
+        Set
+            CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of userdetail)("entityframeworkModel.fk_tblprofiles_tbluserdetails1", "tbluserdetail").Value = value
+        End Set
+    End Property
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <BrowsableAttribute(False)>
+    <DataMemberAttribute()>
+    Public Property userdetailReference() As EntityReference(Of userdetail)
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of userdetail)("entityframeworkModel.fk_tblprofiles_tbluserdetails1", "tbluserdetail")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of userdetail)("entityframeworkModel.fk_tblprofiles_tbluserdetails1", "tbluserdetail", value)
+            End If
+        End Set
+    End Property
+
+    #End Region
+
+End Class
+
+''' <summary>
+''' No Metadata Documentation available.
+''' </summary>
+<EdmEntityTypeAttribute(NamespaceName:="entityframeworkModel", Name:="userdetail")>
+<Serializable()>
+<DataContractAttribute(IsReference:=True)>
+Public Partial Class userdetail
+    Inherits EntityObject
+    #Region "Factory Method"
+
+    ''' <summary>
+    ''' Create a new userdetail object.
+    ''' </summary>
+    ''' <param name="id">Initial value of the ID property.</param>
+    ''' <param name="firstName">Initial value of the FirstName property.</param>
+    ''' <param name="lastName">Initial value of the LastName property.</param>
+    ''' <param name="addressLine1">Initial value of the AddressLine1 property.</param>
+    ''' <param name="addressLine2">Initial value of the AddressLine2 property.</param>
+    ''' <param name="city">Initial value of the City property.</param>
+    ''' <param name="postCode">Initial value of the PostCode property.</param>
+    ''' <param name="country">Initial value of the Country property.</param>
+    ''' <param name="fKUserName">Initial value of the FKUserName property.</param>
+    ''' <param name="fKUserID">Initial value of the FKUserID property.</param>
+    Public Shared Function Createuserdetail(id As Global.System.Int32, firstName As Global.System.String, lastName As Global.System.String, addressLine1 As Global.System.String, addressLine2 As Global.System.String, city As Global.System.String, postCode As Global.System.String, country As Global.System.String, fKUserName As Global.System.String, fKUserID As Global.System.Int32) As userdetail
+        Dim userdetail as userdetail = New userdetail
+        userdetail.ID = id
+        userdetail.FirstName = firstName
+        userdetail.LastName = lastName
+        userdetail.AddressLine1 = addressLine1
+        userdetail.AddressLine2 = addressLine2
+        userdetail.City = city
+        userdetail.PostCode = postCode
+        userdetail.Country = country
+        userdetail.FKUserName = fKUserName
+        userdetail.FKUserID = fKUserID
+        Return userdetail
+    End Function
+
+    #End Region
+
+    #Region "Primitive Properties"
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=true, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property ID() As Global.System.Int32
+        Get
+            Return _ID
+        End Get
+        Set
+            If (_ID <> Value) Then
+                OnIDChanging(value)
+                ReportPropertyChanging("ID")
+                _ID = StructuralObject.SetValidValue(value)
+                ReportPropertyChanged("ID")
+                OnIDChanged()
+            End If
+        End Set
+    End Property
+
+    Private _ID As Global.System.Int32
+    Private Partial Sub OnIDChanging(value As Global.System.Int32)
+    End Sub
+
+    Private Partial Sub OnIDChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property FirstName() As Global.System.String
+        Get
+            Return _FirstName
+        End Get
+        Set
+            OnFirstNameChanging(value)
+            ReportPropertyChanging("FirstName")
+            _FirstName = StructuralObject.SetValidValue(value, false)
+            ReportPropertyChanged("FirstName")
+            OnFirstNameChanged()
+        End Set
+    End Property
+
+    Private _FirstName As Global.System.String
+    Private Partial Sub OnFirstNameChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnFirstNameChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property LastName() As Global.System.String
+        Get
+            Return _LastName
+        End Get
+        Set
+            OnLastNameChanging(value)
+            ReportPropertyChanging("LastName")
+            _LastName = StructuralObject.SetValidValue(value, false)
+            ReportPropertyChanged("LastName")
+            OnLastNameChanged()
+        End Set
+    End Property
+
+    Private _LastName As Global.System.String
+    Private Partial Sub OnLastNameChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnLastNameChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property AddressLine1() As Global.System.String
+        Get
+            Return _AddressLine1
+        End Get
+        Set
+            OnAddressLine1Changing(value)
+            ReportPropertyChanging("AddressLine1")
+            _AddressLine1 = StructuralObject.SetValidValue(value, false)
+            ReportPropertyChanged("AddressLine1")
+            OnAddressLine1Changed()
+        End Set
+    End Property
+
+    Private _AddressLine1 As Global.System.String
+    Private Partial Sub OnAddressLine1Changing(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnAddressLine1Changed()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property AddressLine2() As Global.System.String
+        Get
+            Return _AddressLine2
+        End Get
+        Set
+            OnAddressLine2Changing(value)
+            ReportPropertyChanging("AddressLine2")
+            _AddressLine2 = StructuralObject.SetValidValue(value, false)
+            ReportPropertyChanged("AddressLine2")
+            OnAddressLine2Changed()
+        End Set
+    End Property
+
+    Private _AddressLine2 As Global.System.String
+    Private Partial Sub OnAddressLine2Changing(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnAddressLine2Changed()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property City() As Global.System.String
+        Get
+            Return _City
+        End Get
+        Set
+            OnCityChanging(value)
+            ReportPropertyChanging("City")
+            _City = StructuralObject.SetValidValue(value, false)
+            ReportPropertyChanged("City")
+            OnCityChanged()
+        End Set
+    End Property
+
+    Private _City As Global.System.String
+    Private Partial Sub OnCityChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnCityChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property PostCode() As Global.System.String
+        Get
+            Return _PostCode
+        End Get
+        Set
+            OnPostCodeChanging(value)
+            ReportPropertyChanging("PostCode")
+            _PostCode = StructuralObject.SetValidValue(value, false)
+            ReportPropertyChanged("PostCode")
+            OnPostCodeChanged()
+        End Set
+    End Property
+
+    Private _PostCode As Global.System.String
+    Private Partial Sub OnPostCodeChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnPostCodeChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property Country() As Global.System.String
+        Get
+            Return _Country
+        End Get
+        Set
+            OnCountryChanging(value)
+            ReportPropertyChanging("Country")
+            _Country = StructuralObject.SetValidValue(value, false)
+            ReportPropertyChanged("Country")
+            OnCountryChanged()
+        End Set
+    End Property
+
+    Private _Country As Global.System.String
+    Private Partial Sub OnCountryChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnCountryChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property FKUserName() As Global.System.String
+        Get
+            Return _FKUserName
+        End Get
+        Set
+            OnFKUserNameChanging(value)
+            ReportPropertyChanging("FKUserName")
+            _FKUserName = StructuralObject.SetValidValue(value, false)
+            ReportPropertyChanged("FKUserName")
+            OnFKUserNameChanged()
+        End Set
+    End Property
+
+    Private _FKUserName As Global.System.String
+    Private Partial Sub OnFKUserNameChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OnFKUserNameChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=false)>
+    <DataMemberAttribute()>
+    Public Property FKUserID() As Global.System.Int32
+        Get
+            Return _FKUserID
+        End Get
+        Set
+            OnFKUserIDChanging(value)
+            ReportPropertyChanging("FKUserID")
+            _FKUserID = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("FKUserID")
+            OnFKUserIDChanged()
+        End Set
+    End Property
+
+    Private _FKUserID As Global.System.Int32
+    Private Partial Sub OnFKUserIDChanging(value As Global.System.Int32)
+    End Sub
+
+    Private Partial Sub OnFKUserIDChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property tbluserdetailscol() As Global.System.String
+        Get
+            Return _tbluserdetailscol
+        End Get
+        Set
+            OntbluserdetailscolChanging(value)
+            ReportPropertyChanging("tbluserdetailscol")
+            _tbluserdetailscol = StructuralObject.SetValidValue(value, true)
+            ReportPropertyChanged("tbluserdetailscol")
+            OntbluserdetailscolChanged()
+        End Set
+    End Property
+
+    Private _tbluserdetailscol As Global.System.String
+    Private Partial Sub OntbluserdetailscolChanging(value As Global.System.String)
+    End Sub
+
+    Private Partial Sub OntbluserdetailscolChanged()
+    End Sub
+
+    #End Region
+
+    #Region "Navigation Properties"
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("entityframeworkModel", "fk_tblprofiles_tbluserdetails1", "profile")>
+     Public Property profiles() As EntityCollection(Of profile)
+        Get
+            Return CType(Me,IEntityWithRelationships).RelationshipManager.GetRelatedCollection(Of profile)("entityframeworkModel.fk_tblprofiles_tbluserdetails1", "profile")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedCollection(Of profile)("entityframeworkModel.fk_tblprofiles_tbluserdetails1", "profile", value)
+            End If
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <XmlIgnoreAttribute()>
+    <SoapIgnoreAttribute()>
+    <DataMemberAttribute()>
+    <EdmRelationshipNavigationPropertyAttribute("entityframeworkModel", "fk_tbluserdetails_my_aspnet_users1", "my_aspnet_users")>
+    Public Property aspnetusers() As aspnetusers
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of aspnetusers)("entityframeworkModel.fk_tbluserdetails_my_aspnet_users1", "my_aspnet_users").Value
+        End Get
+        Set
+            CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of aspnetusers)("entityframeworkModel.fk_tbluserdetails_my_aspnet_users1", "my_aspnet_users").Value = value
+        End Set
+    End Property
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <BrowsableAttribute(False)>
+    <DataMemberAttribute()>
+    Public Property aspnetusersReference() As EntityReference(Of aspnetusers)
+        Get
+            Return CType(Me, IEntityWithRelationships).RelationshipManager.GetRelatedReference(Of aspnetusers)("entityframeworkModel.fk_tbluserdetails_my_aspnet_users1", "my_aspnet_users")
+        End Get
+        Set
+            If (Not value Is Nothing)
+                CType(Me, IEntityWithRelationships).RelationshipManager.InitializeRelatedReference(Of aspnetusers)("entityframeworkModel.fk_tbluserdetails_my_aspnet_users1", "my_aspnet_users", value)
             End If
         End Set
     End Property
