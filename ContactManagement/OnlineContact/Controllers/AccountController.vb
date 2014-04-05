@@ -4,6 +4,7 @@ Imports System.Web.Routing
 
 Public Class AccountController
     Inherits System.Web.Mvc.Controller
+    Dim db As OnlineContact = New OnlineContact()
 
     Private formsServiceValue As IFormsAuthenticationService
     Private membershipServiceValue As IMembershipService
@@ -87,7 +88,10 @@ Public Class AccountController
 
             If createStatus = MembershipCreateStatus.Success Then
                 FormsService.SignIn(model.UserName, False)
-                Return RedirectToAction("Index", "Home")
+
+                'Return View("CreateUserDetails")
+
+               return RedirectToAction("CreateUserDetails", "Account")
             Else
                 ModelState.AddModelError("", AccountValidation.ErrorCodeToString(createStatus))
             End If
@@ -122,6 +126,34 @@ Public Class AccountController
         ' If we got this far, something failed, redisplay form
         ViewData("PasswordLength") = MembershipService.MinPasswordLength
         Return View(model)
+    End Function
+    <Authorize()> _
+    <HttpGet()> _
+    Function CreateUserDetails() As ActionResult
+        ViewBag.FKUserID = New SelectList(db.aspnetusers, "id", "name")
+        Return View()
+    End Function
+
+    '
+    ' POST: /UserDetails/Create
+    <Authorize()> _
+    <HttpPost()> _
+    Function CreateUserDetails(ByVal userdetail As userdetail) As ActionResult
+        If ModelState.IsValid Then
+
+            'add the user membership id and username
+            Dim currentUser As MembershipUser = Membership.GetUser()
+            userdetail.FKUserID = CType(currentUser.ProviderUserKey, Integer)
+            userdetail.FKUserName = currentUser.UserName
+
+            db.userdetails.AddObject(userdetail)
+            db.SaveChanges()
+            Return RedirectToAction("Index", "Home")
+        End If
+
+        ViewBag.FKUserID = New SelectList(db.aspnetusers, "id", "name", userdetail.FKUserID)
+
+        Return View(userdetail)
     End Function
 
     ' **************************************

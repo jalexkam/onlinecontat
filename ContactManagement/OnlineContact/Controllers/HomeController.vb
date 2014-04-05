@@ -12,18 +12,23 @@ Namespace Controllers
 
         Function Index() As ActionResult
 
-            Dim userInfo As userdetail = New userdetail
+            Dim userInfo As userdetail = Nothing
 
             If User.Identity.IsAuthenticated Then
-                Dim userName = User.Identity.Name
-                userInfo = _onlineContactDB.userdetails.Single(Function(c) c.FKUserID = 1)
+
+                Dim currentUser As MembershipUser = Membership.GetUser()
+                Dim userID = CType(currentUser.ProviderUserKey, Long)
+                userInfo = _onlineContactDB.userdetails.SingleOrDefault(Function(c) c.FKUserID = userID)
             Else
                 RedirectToAction("LogOn", "Account")
             End If
             ViewBag.UserInfo = userInfo
 
+
             Dim profilesList As List(Of profile) = New List(Of profile)
-            profilesList = _onlineContactDB.profiles.Where(Function(c) c.FKUserDetailsID = userInfo.ID).ToList()
+            If Not userInfo Is Nothing Then
+                profilesList = _onlineContactDB.profiles.Where(Function(c) c.FKUserDetailsID = userInfo.ID).ToList()
+            End If
             ViewBag.Profiles = profilesList
 
            

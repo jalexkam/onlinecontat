@@ -216,6 +216,7 @@
     <Compile Include="Controllers\HomeController.vb" />
     <Compile Include="Controllers\ProfileController.vb" />
     <Compile Include="Controllers\TelephoneController.vb" />
+    <Compile Include="Controllers\UserDetailsController.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -242,6 +243,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Views\Account\CreateUserController.vb" />
+    <Compile Include="Views\Account\UserDetailsController.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -408,6 +411,14 @@
     <Content Include="Views\Shared\_phoneDetails.vbhtml" />
     <Content Include="Views\Telephone\Create.vbhtml" />
     <Content Include="Views\Telephone\Index.vbhtml" />
+    <Content Include="Views\User\Edit.vbhtml" />
+    <Content Include="Views\User\Create.vbhtml" />
+    <Content Include="Views\UserDetails\Index.vbhtml" />
+    <Content Include="Views\UserDetails\Details.vbhtml" />
+    <Content Include="Views\UserDetails\Create.vbhtml" />
+    <Content Include="Views\UserDetails\Edit.vbhtml" />
+    <Content Include="Views\UserDetails\Delete.vbhtml" />
+    <Content Include="Views\Account\CreateUserDetails.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -476,7 +487,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>53173</DevelopmentServerPort>
+          <DevelopmentServerPort>55819</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Default Web Site/OnlineContact_deploy" />
+  <setParameter name="LocalMySqlServer-Web.config Connection String" value="Datasource=192.168.0.11;Database=entityframework;uid=alexandre;pwd=jalilwam;" />
+  <setParameter name="DefaultConnection-Web.config Connection String" value="Data Source=.\SQLEXPRESS;Initial Catalog=aspnet-OnlineContact-20140311214013;Integrated Security=SSPI" />
+  <setParameter name="OnlineContact-Web.config Connection String" value="metadata=res://*/Models.OnlinContactDB.csdl|res://*/Models.OnlinContactDB.ssdl|res://*/Models.OnlinContactDB.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=192.168.0.11;User Id=alexandre;password=jalilwam;Persist Security Info=True;database=entityframework&quot;" />
+</parameters>

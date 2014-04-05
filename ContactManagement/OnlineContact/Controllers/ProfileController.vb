@@ -16,8 +16,15 @@ Namespace Controllers
         <HttpPost()> _
         Function Create(ByVal profile As Profile) As ActionResult
             If ModelState.IsValid Then
-                db.Profiles.AddObject(profile)
+
+                ''get the current user details
+                Dim currentUser As MembershipUser = Membership.GetUser()
+                Dim userInfo = db.userdetails.SingleOrDefault(Function(c) c.FKUserID = CType(currentUser.ProviderUserKey, Double))
+                ''add the userID to the profile to be saved
+                profile.FKUserDetailsID = userInfo.ID
+                db.profiles.AddObject(profile)
                 db.SaveChanges()
+
 
                 'generate the success message after a new contact(profile) has been created
                 Dim successCreateProfile As CreateProfileSuccessMessage = New CreateProfileSuccessMessage()

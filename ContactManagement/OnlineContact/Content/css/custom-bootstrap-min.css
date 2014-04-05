@@ -141,11 +141,11 @@ code {
             margin-bottom: 0px !important;
         }
         
-        div.row-fluid.address div.span4
+        /*div.row-fluid.address div.span4
         {
             position: relative;
             border: 1px solid red;
-        }
+        }*/
         
         div.row-fluid.address div.span4 input, table.phone-number input
         {
@@ -190,11 +190,11 @@ code {
             width: 175px;
         }
         
-        h3.warning()
+        h3.warning
         {
             color: #DA4F49;
         }
-        h4.info()
+        h4.info
         {
             color: #DA4F49;
             background-color: #49AFCD;
@@ -207,7 +207,7 @@ code {
             border-radius: 4px;
         }
         
-        h4.error()
+        h4.error
         {
             color: #DA4F49;
             background-color: #FAA732;
@@ -220,7 +220,7 @@ code {
             border-radius: 4px;
         }
         
-        h4.success()
+        h4.success
         {
             background-color: #5BB75B;
             padding: 0.75em;

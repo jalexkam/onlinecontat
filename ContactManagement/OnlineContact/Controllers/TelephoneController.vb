@@ -15,7 +15,7 @@
             Dim phoneNumbersTypeList As SelectList = New SelectList(phoneNumbersType, "ID", "Name")
             ViewBag.PhoneNumbersTypeList = phoneNumbersTypeList
 
-            Dim phoneProfile = _contactdB.Profiles.Single(Function(p) p.ID = id)
+            Dim phoneProfile = _contactdB.profiles.SingleOrDefault(Function(p) p.ID = id)
             ViewBag.PhoneProfile = phoneProfile
 
             Return View(telephoneNumberList)

@@ -33,28 +33,36 @@
 End Code
 
     @If Not errorDeleteAddress Is Nothing Then
-        @<div class="span12">
+        @<div class="row-fluid">
+        <div class="span12">
             <h4 class="error">@errorDeleteAddress.ErrorMessage</h4>
         </div>
+         </div>
     End If
 
     @If Not successDeleteAddress Is Nothing Then
-        @<div class="span12">
+          @<div class="row-fluid">
+        <div class="span12">
             <h4 class="success">@successDeleteAddress.SuccessMessage</h4>
         </div>
+         </div>
     End If
 
     
     @If Not successCreateAddress Is Nothing Then
-        @<div class="span12">
+         @<div class="row-fluid">
+        <div class="span12">
             <h4 class="success">@successCreateAddress.SuccessMessage</h4>
         </div>
+         </div>
     End If
 
     
     @If Not successEditAddress Is Nothing Then
-        @<div class="span12">
+         @<div class="row-fluid">
+        <div class="span12">
             <h4 class="success">@successEditAddress.SuccessMessage</h4>
+        </div>
         </div>
     End If
 

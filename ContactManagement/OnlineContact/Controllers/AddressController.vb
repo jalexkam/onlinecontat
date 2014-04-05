@@ -59,6 +59,17 @@ Namespace Controllers
                 _contactDB.AddToAddresses(createAddress)
                 _contactDB.SaveChanges()
 
+                'Dim userInfo As userdetail = New userdetail
+
+                'If User.Identity.IsAuthenticated Then
+                '    Dim userName = User.Identity.Name
+                '    userInfo = _contactDB.userdetails.Single(Function(c) c.FKUserID = 1)
+                'Else
+                '    RedirectToAction("LogOn", "Account")
+                'End If
+                'ViewBag.UserInfo = userInfo
+
+
 
                 'generate the success message after a new contact(Address) has been created
                 Dim successCreateAddress As CreateAddressSuccessMessage = New CreateAddressSuccessMessage()
